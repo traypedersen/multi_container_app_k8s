@@ -15,7 +15,7 @@ after_success:
   - docker build -t tink3r/multi-server ./server
   - docker build -t tink3r/multi-worker ./worker
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker push tin3r/multi-client
-  - docker push tin3r/multi-nginx
-  - docker push tin3r/multi-server
-  - docker push tin3r/multi-worker
+  - docker push tink3r/multi-client
+  - docker push tink3r/multi-nginx
+  - docker push tink3r/multi-server
+  - docker push tink3r/multi-worker
