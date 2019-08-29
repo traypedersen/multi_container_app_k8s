@@ -19,3 +19,4 @@ after_success:
   - docker push tink3r/multi-nginx
   - docker push tink3r/multi-server
   - docker push tink3r/multi-worker
+
