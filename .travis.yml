@@ -1,0 +1,21 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -r tink3r/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run tink3r/react-test npm test -- --coverage
+  - docker run -e CI=true tink3r/react-test npm test
+
+after_success:
+  - docker build -t tink3r/multi-client ./client
+  - docker build -t tink3r/multi-nginx ./nginx
+  - docker build -t tink3r/multi-server ./server
+  - docker build -t tink3r/multi-worker ./worker
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push tin3r/multi-client
+  - docker push tin3r/multi-nginx
+  - docker push tin3r/multi-server
+  - docker push tin3r/multi-worker
