@@ -7,6 +7,6 @@ metadata:
 spec:
   containers:
     - name: client
-      image: tink3r/multi-client
+      image: tink3r/multi-worker
       ports:
         - containerPort: 3000
